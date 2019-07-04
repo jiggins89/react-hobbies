@@ -17,7 +17,7 @@ class InputFields extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    this.props.addUser(this.state);
+    this.props.addUserFn(this.state);
   };
 
   render() {

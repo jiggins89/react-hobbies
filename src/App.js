@@ -12,11 +12,11 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div className="ui container">
         <h1>Enter your deets:</h1>
-        <InputFields addPerson={this.addPerson} />
+        <InputFields addUserFn={this.addUser} />
         <UserList people={this.state.people} />
       </div>
     );
