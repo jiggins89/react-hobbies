@@ -2,19 +2,22 @@
 import React from "react";
 // Component imports
 import InputFields from "./components/InputFields";
+import UserList from "./components/UserList";
 
 class App extends React.Component {
   state = { people: [] };
 
-  addPerson = e => {
-    console.log(e);
+  addUser = user => {
+    this.setState({ people: [...this.state.people, user] });
   };
 
   render() {
+    console.log(this.state);
     return (
       <div className="ui container">
         <h1>Enter your deets:</h1>
         <InputFields addPerson={this.addPerson} />
+        <UserList people={this.state.people} />
       </div>
     );
   }

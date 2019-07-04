@@ -7,7 +7,6 @@ class InputFields extends React.Component {
   };
 
   handleChange = e => {
-    console.log(e.target);
     if (e.target === document.getElementById("firstName")) {
       this.setState({ firstName: e.target.value });
     } else {
@@ -16,15 +15,15 @@ class InputFields extends React.Component {
   };
 
   handleSubmit = e => {
-    console.log(e);
     e.preventDefault();
+
+    this.props.addUser(this.state);
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="ui form">
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input
             onChange={this.handleChange}
             type="text"
@@ -37,7 +36,7 @@ class InputFields extends React.Component {
             placeholder="Surname"
             id="surname"
           />
-          <button onSubmit={this.handleSubmit}>Submit</button>
+          <button>Submit</button>
         </form>
       </div>
     );
