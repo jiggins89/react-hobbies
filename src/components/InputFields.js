@@ -3,14 +3,17 @@ import React from "react";
 class InputFields extends React.Component {
   state = {
     firstName: "",
-    surname: ""
+    surname: "",
+    hobby: ""
   };
 
   handleChange = e => {
     if (e.target === document.getElementById("firstName")) {
       this.setState({ firstName: e.target.value });
-    } else {
+    } else if (e.target === document.getElementById("surname")) {
       this.setState({ surname: e.target.value });
+    } else {
+      this.setState({ hobby: e.target.value });
     }
   };
 
@@ -36,6 +39,11 @@ class InputFields extends React.Component {
             placeholder="Surname"
             id="surname"
           />
+          <select onChange={this.handleChange}>
+            <option value="Football">Football</option>
+            <option value="Basketball">Basketball</option>
+            <option value="Coding!">Coding!</option>
+          </select>
           <button>Submit</button>
         </form>
       </div>

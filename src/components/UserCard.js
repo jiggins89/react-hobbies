@@ -7,6 +7,7 @@ const UserCard = props => {
       <ul>
         <li>First Name: {props.user.firstName}</li>
         <li>Surname: {props.user.surname}</li>
+        <li>Hobby: {props.user.hobby}</li>
       </ul>
     </div>
   );
