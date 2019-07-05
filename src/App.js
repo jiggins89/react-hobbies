@@ -16,7 +16,7 @@ class App extends React.Component {
     // console.log(this.state);
     return (
       <div className="ui container">
-        <h1>Enter your deets:</h1>
+        <h3>Enter your deets:</h3>
         <InputFields addUserFn={this.addUser} />
         <Divider description="See our people below" />
         <UserList people={this.state.people} />
