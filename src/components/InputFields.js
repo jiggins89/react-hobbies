@@ -1,18 +1,11 @@
+// Library imports
 import React from "react";
 import { Dropdown } from "semantic-ui-react";
-
+// Component imports
 import InputField from "./InputField";
-
-const dropdownOptions = [
-  { key: "football", text: "Football", value: "football" },
-  { key: "basketball", text: "Basketball", value: "basketball" },
-  { key: "coding", text: "Coding", value: "coding" }
-];
-
-const formFields = [
-  { id: "firstName", value: "First Name" },
-  { id: "surname", value: "Surname" }
-];
+// Options imports
+import dropdownOptions from "../options/dropdownOptions";
+import formFieldOptions from "../options/formFieldOptions";
 
 class InputFields extends React.Component {
   state = {
@@ -26,7 +19,7 @@ class InputFields extends React.Component {
   }
 
   handleChange = (userInput, id) => {
-    formFields.forEach(field => {
+    formFieldOptions.forEach(field => {
       if (id === field.id) {
         this.setState({ [field.id]: this.Capitalize(userInput) });
       }
@@ -35,7 +28,7 @@ class InputFields extends React.Component {
 
   handleDropdownChange = e => {
     let result = e.target.firstChild.innerHTML;
-    this.setState({ hobby: this.Capitalize(result) });
+    this.setState({ hobby: result });
   };
 
   handleSubmit = e => {
@@ -51,7 +44,7 @@ class InputFields extends React.Component {
     }
   };
 
-  formList = formFields.map(field => {
+  formList = formFieldOptions.map(field => {
     return (
       <InputField
         updateFn={this.handleChange}
@@ -63,7 +56,6 @@ class InputFields extends React.Component {
   });
 
   render() {
-    console.log(this.state);
     return (
       <div className="ui form">
         <form onSubmit={this.handleSubmit}>

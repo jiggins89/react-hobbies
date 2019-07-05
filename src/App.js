@@ -13,7 +13,6 @@ class App extends React.Component {
   };
 
   render() {
-    // console.log(this.state);
     return (
       <div className="ui container">
         <h3>Enter your deets:</h3>
