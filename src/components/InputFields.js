@@ -21,21 +21,21 @@ class InputFields extends React.Component {
     hobby: ""
   };
 
-  // Capitalize(str) {
-  //   return str.charAt(0).toUpperCase() + str.slice(1);
-  // }
+  Capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
 
   handleChange = (userInput, id) => {
     console.log(id);
     formFields.forEach(field => {
       if (id === field.id) {
-        this.setState({ [field.id]: userInput });
+        this.setState({ [field.id]: this.Capitalize(userInput) });
       }
     });
   };
 
   handleDropdownChange = (userInput, id) => {
-    this.setState({ hobby: userInput.target.innerText });
+    this.setState({ hobby: this.Capitalize(userInput.target.innerText) });
   };
 
   handleSubmit = e => {
