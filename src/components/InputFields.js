@@ -33,8 +33,9 @@ class InputFields extends React.Component {
     });
   };
 
-  handleDropdownChange = (userInput, id) => {
-    this.setState({ hobby: this.Capitalize(userInput.target.innerText) });
+  handleDropdownChange = e => {
+    let result = e.target.firstChild.innerHTML;
+    this.setState({ hobby: this.Capitalize(result) });
   };
 
   handleSubmit = e => {
@@ -62,6 +63,7 @@ class InputFields extends React.Component {
   });
 
   render() {
+    console.log(this.state);
     return (
       <div className="ui form">
         <form onSubmit={this.handleSubmit}>
