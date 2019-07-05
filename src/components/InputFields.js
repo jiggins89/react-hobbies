@@ -44,7 +44,6 @@ class InputFields extends React.Component {
       this.state.surname === "" ||
       this.state.hobby === ""
     ) {
-      window.location.reload();
       alert("Please fill in all the deets to proceed....");
     } else {
       this.props.addUserFn(this.state);
