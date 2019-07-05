@@ -26,7 +26,6 @@ class InputFields extends React.Component {
   }
 
   handleChange = (userInput, id) => {
-    console.log(id);
     formFields.forEach(field => {
       if (id === field.id) {
         this.setState({ [field.id]: this.Capitalize(userInput) });
@@ -55,16 +54,15 @@ class InputFields extends React.Component {
   formList = formFields.map(field => {
     return (
       <InputField
-        formName={field.value}
-        key={field.id}
         updateFn={this.handleChange}
+        formName={field.value}
         id={field.id}
+        key={field.id}
       />
     );
   });
 
   render() {
-    console.log(this.state);
     return (
       <div className="ui form">
         <form onSubmit={this.handleSubmit}>
@@ -79,7 +77,7 @@ class InputFields extends React.Component {
               options={dropdownOptions}
             />
           </div>
-          <button className="ui button">Submit</button>
+          <button className="fluid ui button">Submit</button>
         </form>
       </div>
     );
