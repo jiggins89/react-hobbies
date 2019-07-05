@@ -7,7 +7,11 @@ const UserList = props => {
     return <UserCard user={user} key={index} />;
   });
 
-  return <div className="ui link cards">{peopleList}</div>;
+  return (
+    <div className="ui link cards" style={{ justifyContent: "center" }}>
+      {peopleList}
+    </div>
+  );
 };
 
 export default UserList;
