@@ -2,7 +2,6 @@ import React from "react";
 import Faker from "faker";
 
 const UserCard = props => {
-  // console.log(props.user.firstName);
   return (
     <div className="card">
       <div className="image">

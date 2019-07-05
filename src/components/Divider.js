@@ -3,7 +3,7 @@ import React from "react";
 const Divider = props => {
   return (
     <h4 className="ui horizontal divider header">
-      <i className="tag icon"></i>
+      <i className="user icon"></i>
       {props.description}
     </h4>
   );

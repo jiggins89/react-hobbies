@@ -1,10 +1,17 @@
 import React from "react";
 import { Dropdown } from "semantic-ui-react";
 
-const options = [
+import InputField from "./InputField";
+
+const dropdownOptions = [
   { key: "football", text: "Football", value: "football" },
   { key: "basketball", text: "Basketball", value: "basketball" },
   { key: "coding", text: "Coding", value: "coding" }
+];
+
+const formFields = [
+  { id: "firstName", value: "First Name" },
+  { id: "surname", value: "Surname" }
 ];
 
 class InputFields extends React.Component {
@@ -14,61 +21,62 @@ class InputFields extends React.Component {
     hobby: ""
   };
 
-  Capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
+  // Capitalize(str) {
+  //   return str.charAt(0).toUpperCase() + str.slice(1);
+  // }
 
-  handleChange = e => {
-    console.log(e.target.innerText);
-    if (e.target === document.getElementById("firstName")) {
-      this.setState({ firstName: this.Capitalize(e.target.value) });
-    } else if (e.target === document.getElementById("surname")) {
-      this.setState({ surname: this.Capitalize(e.target.value) });
-    } else {
-      this.setState({ hobby: e.target.innerText });
-    }
+  handleChange = (userInput, id) => {
+    console.log(id);
+    formFields.forEach(field => {
+      if (id === field.id) {
+        this.setState({ [field.id]: userInput });
+      }
+    });
+  };
+
+  handleDropdownChange = (userInput, id) => {
+    this.setState({ hobby: userInput.target.innerText });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-
-    this.props.addUserFn(this.state);
-    this.setState({ firstName: "", surname: "", hobby: "Hobbies" });
+    if (
+      this.state.firstName === "" ||
+      this.state.surname === "" ||
+      this.state.hobby === ""
+    ) {
+      window.location.reload();
+      alert("Please fill in all the deets to proceed....");
+    } else {
+      this.props.addUserFn(this.state);
+    }
   };
+
+  formList = formFields.map(field => {
+    return (
+      <InputField
+        formName={field.value}
+        key={field.id}
+        updateFn={this.handleChange}
+        id={field.id}
+      />
+    );
+  });
 
   render() {
     console.log(this.state);
     return (
       <div className="ui form">
         <form onSubmit={this.handleSubmit}>
+          {this.formList}
           <div className="ui field">
-            <label>First Name:</label>
-            <input
-              onChange={this.handleChange}
-              value={this.state.firstName}
-              type="text"
-              placeholder="First Name"
-              id="firstName"
-            />
-          </div>
-          <div className="ui field">
-            <label>Surname:</label>
-            <input
-              value={this.state.surname}
-              onChange={this.handleChange}
-              type="text"
-              placeholder="Surname"
-              id="surname"
-            />
-          </div>
-          <div className="ui field">
-            <label>Pick your favourite hobbies:</label>
+            <label>Pick your favourite hobby:</label>
             <Dropdown
-              onChange={this.handleChange}
-              placeholder="Hobbies"
+              onChange={this.handleDropdownChange}
+              placeholder="Pick a hobby..."
               fluid
               selection
-              options={options}
+              options={dropdownOptions}
             />
           </div>
           <button className="ui button">Submit</button>

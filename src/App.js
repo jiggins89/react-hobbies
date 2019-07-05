@@ -18,7 +18,7 @@ class App extends React.Component {
       <div className="ui container">
         <h1>Enter your deets:</h1>
         <InputFields addUserFn={this.addUser} />
-        <Divider description="Cards" />
+        <Divider description="See our people below" />
         <UserList people={this.state.people} />
       </div>
     );
