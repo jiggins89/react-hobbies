@@ -27,6 +27,7 @@ class InputFields extends React.Component {
   };
 
   handleDropdownChange = e => {
+    console.log(e.target);
     let result = e.target.firstChild.innerHTML;
     this.setState({ hobby: result });
   };
